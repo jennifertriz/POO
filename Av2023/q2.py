@@ -6,10 +6,22 @@ class Disciplina:
         self.__ch = ch
         self.__aprovado = media >= 60
 
+    def setNome(self, nome):
+        self.__nome = nome
+
+    def getNome(self):
+        return self.__nome
+    
+    def SetSemestre(self, semestre):
+        self.__semestre = semestre
 
     def getSemestre(self):
         return self.__semestre
 
+    def setMedia(self, media):
+        if self.__media > 0 and self.__media < 100: self.__media = media
+        else: return ValueError()
+        
     def getMedia(self):
         return self.__media
 
@@ -51,24 +63,20 @@ class Historico:
 ####################################################
 
 h = Historico('aluno')
-a = Disciplina("POO", "2024.1", 100, 90)
+
 b = Disciplina("Algoritmos", "2024.1", 100, 55)
 c = Disciplina("Inglês", "2023.1", 90, 80)
 
-h.inserir(a)
 h.inserir(b)
 h.inserir(c)
 
 print("Todas as disciplinas")
-print(*h.listar())
-
 for disc in h.listar():
     print(disc)
 
 for disc in h.listar_semestre("2024.1"):
     print(disc)
 
-print(a)
 print(b)
 print(c)
 
